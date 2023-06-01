@@ -14,7 +14,7 @@ import { removeItem } from '../../../helpers/storage';
 
 export const signup = (payload: ISignupData) =>
   client.post<IGenericResponse>(
-    'client',
+    'auth/singin',
     payload, {
       headers: {
         "Content-Type": "application/json",

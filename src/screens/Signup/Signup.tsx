@@ -26,6 +26,7 @@ export type SignupFormFields = {
   email: string;
   password: string;
   name: string;
+  image: string;
 };
 
 export const emailPattern = {
@@ -70,6 +71,7 @@ const Signup: FunctionComponent<IProps> = ({
       email: data.email,
       password: data.password,
       name: data.name,
+      image: ''
     });
     setError("");
   });
@@ -82,6 +84,12 @@ const Signup: FunctionComponent<IProps> = ({
     if (signupState.errorMessage?.length === 0) return;
     setError(signupState.errorMessage ? signupState.errorMessage : "Error");
   }, [signupState.errorMessage, signupState.errorCode]);
+
+  useEffect(() => {
+    if (signupState.success) {
+      navigate("/login");
+    }
+  }, [signupState]);
 
   return (
     <ContainerSignUp height={sizeWindow.height+'px'}>

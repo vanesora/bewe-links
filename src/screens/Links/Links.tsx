@@ -62,7 +62,6 @@ const Links: FunctionComponent<IProps> = ({
   const { screen } = setup;
   const { links } = screen;
   const [user, setUser] = useState({ name: "", email: "" });
-  const [listUrls, setListUrls] = useState<ILinks[]>([]);
   const sizeWindow = useWindowWidth();
   const navigate = useNavigate();
 
@@ -74,7 +73,7 @@ const Links: FunctionComponent<IProps> = ({
 
   const handleButtonMenu = () => {
     logoutStart();
-    navigate("/");
+    navigate("/login");
   };
 
   const handleButtonDelete = (id: string) => {
@@ -107,13 +106,6 @@ const Links: FunctionComponent<IProps> = ({
     getLinksStart();
   }, []);
 
-  useEffect(() => {
-    if(linksState.success){
-      console.log(linksState);
-      
-      setListUrls(linksState.links)      
-    }
-  }, [linksState]);
 
   return (
     <ContainerLinks height={sizeWindow.height + "px"}>
@@ -173,7 +165,7 @@ const Links: FunctionComponent<IProps> = ({
             </FormLinks>
           </ContainerCards>
           <ContainerCards>
-            {listUrls.length>0 && listUrls.map((urls: ILinks) => {
+            {linksState.links.length>0 && linksState.links.map((urls: ILinks) => {
               return <MoleculeDescription url={urls.url} text={urls.name} id={urls.id?? '1'} onClick={(id)=>handleButtonDelete(id)} />;
             })}
           </ContainerCards>

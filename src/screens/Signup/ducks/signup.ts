@@ -11,7 +11,8 @@ export interface ISignupStateDuck {
 export interface ISignupData {
   email: string;
   password: string;
-  name: string
+  name: string;
+  image: string
 }
 
 export interface ISignupResponse {
