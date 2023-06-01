@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   links: linksReducer
 });
 
-const rootReducerEnhancer: typeof rootReducer = (state: any, action: AnyAction) => {
+const rootReducerEnhancer: typeof rootReducer = (state: any, action: any) => {
 
   // Clear all data in redux store to initial.
   if (action.type === DESTROY_SESSION) {
