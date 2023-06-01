@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export interface IStylesProps {
+  height: string;
+}
+
+
 export const FormSignUp = styled.form``;
 
 export const ContainerSignUp = styled.div`
@@ -7,6 +12,7 @@ export const ContainerSignUp = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  min-height: ${({ height }: IStylesProps) => height};
 `;
 
 export const ContainerButton = styled.div`

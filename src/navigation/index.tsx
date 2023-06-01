@@ -18,6 +18,7 @@ import { Navigate } from "react-router";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import { ISetupState } from "../store/setup/ducks";
 import { IAction } from "../interfaces/global";
+import Links from "../screens/Links/Links";
 
 interface IProps {
   loggedInSate: ILoggedIn;
@@ -43,10 +44,11 @@ const Online = ({ loggedIn }: { loggedIn: boolean}) => {
         <ContainerNav height={sizeWindow.height+'px'}>
               <Routes>
                 <Route path="/" element=
-                  {loggedIn ? <User /> : <Login />}>
+                  {loggedIn ? <Links /> : <Login />}>
                 </Route>
-                <Route path="/signup" element={!loggedIn ? <Signup /> :  <Navigate to="/user"/>}></Route>
-                <Route path="/login" element={!loggedIn ? <Login /> : <Navigate to="/user"/>}></Route>
+                <Route path="/signup" element={!loggedIn ? <Signup /> :  <Navigate to="/links"/>}></Route>
+                <Route path="/login" element={!loggedIn ? <Login /> : <Navigate to="/links"/>}></Route>
+                <Route path="/links"element={loggedIn ? <Links /> : <Navigate to="/login"/>}></Route>
                 <Route path="/user"element={loggedIn ? <User /> : <Navigate to="/login"/>}></Route>
                 <Route path='*' element={<Navigate to='/' />} />
               </Routes>

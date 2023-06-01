@@ -84,9 +84,9 @@ const Signup: FunctionComponent<IProps> = ({
   }, [signupState.errorMessage, signupState.errorCode]);
 
   return (
-    <ContainerSignUp>
+    <ContainerSignUp height={sizeWindow.height+'px'}>
       <AtomCardContainer
-        height={sizeWindow.width < 406 ? "80%" : "100%"}
+        height={"100%"}
         width={sizeWindow.width < 406 ? "calc(100% - 72px)" : "400px"}
         shadowSize={sizeWindow.width < 406 ? "noshadow" : "large"}
         padding="36px"        

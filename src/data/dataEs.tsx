@@ -78,7 +78,11 @@ export const esSetup: ISetup = {
       },
     },
     links: {
-      pageTitle: "string",
+      labelUrl: "Url to save",
+      labelName: "Url to save",
+      errorInputUrl: "You must enter the url.",
+      errorInputName: "You must enter the name.",
+      btn: "ADD"
     },
     buttonsNav: {
       logout: "LOGOUT",

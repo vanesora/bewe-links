@@ -28,7 +28,7 @@ export const GeneralStyledBtn = styled.button`
   border: none;
   display: flex;
   font-size: ${({ size }: IStylesProps) =>
-    size === "small" ? "10px" : size === "medium" ? "14px" : "18px"};
+    size === "small" ? "15px" : size === "medium" ? "25px" : "40px"};
   font-weight: 700;
   height: ${({ size }: IStylesProps) => ButtonHeight[size]};
   justify-content: center;

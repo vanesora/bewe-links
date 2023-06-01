@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { enSetup } from "../../data/dataEn";
+
+export interface IStylesProps {
+  height: string;
+}
 
 export const FormLogin = styled.form``;
 
@@ -8,6 +11,7 @@ export const ContainerLogin = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  min-height: ${({ height }: IStylesProps) => height};
 `;
 
 export const ContainerButton = styled.div`

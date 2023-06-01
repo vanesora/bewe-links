@@ -29,11 +29,11 @@ export const AtomIcon: FunctionComponent<IIconProps> = ({
     // eslint-disable-next-line default-case
     switch (icon) {
       case 'back':
-        return <BsTrash  style={{ height: size, color: theme[color] }}/>;
+        return <FiChevronLeft  style={{ height: size, color: theme[color] }}/>;
       case 'edit':
         return <BiEdit style={{ height: size, color: theme[color] }}/>;
       case 'trash':
-        return <FiChevronLeft style={{ height: size, color: theme[color]}}/>;
+        return <BsTrash style={{ height: size, color: theme[color]}}/>;
     }
   }
 

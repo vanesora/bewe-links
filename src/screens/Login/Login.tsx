@@ -57,7 +57,6 @@ const Login: FunctionComponent<IProps> = ({ setup, loginState, loginStart }) => 
   } = useForm<LoginFormFields>();
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
     loginStart({email:data.email, password: data.password});
     setError('')
   });
@@ -67,17 +66,17 @@ const Login: FunctionComponent<IProps> = ({ setup, loginState, loginStart }) => 
   };
 
   useEffect(() => {
-    if (loginState.errorMessage?.length === 0) return;
+    console.log(loginState);
     setError(loginState.errorMessage
       ? loginState.errorMessage
       : 'Error')
-  }, [loginState.errorMessage, loginState.errorCode]);
+  }, [loginState]);
 
 
   return (
-    <ContainerLogin>
+    <ContainerLogin height={sizeWindow.height+'px'}>
       <AtomCardContainer
-        height={sizeWindow.width < 406 ? "80%" : "100%"}
+        height={ "100%"}
         width={sizeWindow.width < 406 ? "calc(100% - 72px)" : "400px"}
         shadowSize={sizeWindow.width < 406 ? "noshadow" : "large"}
         padding="36px"
@@ -118,7 +117,7 @@ const Login: FunctionComponent<IProps> = ({ setup, loginState, loginStart }) => 
               rules={{ required: login.errorInputPassword }}
               errors={errors}
             />
-            {error && <AtomBody size="medium" text={error} color="secondary300" />}
+            {error && <AtomBody size="large" text={error} color="secondary300" weight="600" align="left" />}
             <ContainerButton>
               <AtomButtonDefault
                 color="primary"

@@ -43,7 +43,11 @@ export interface IButtonsNav {
   signup: string;
 }
 export interface ILinks {
-  pageTitle: string;
+  labelUrl: string;
+  labelName: string;
+  errorInputUrl: string;
+  errorInputName: string;
+  btn: string;
 }
 
 export interface IProfile {

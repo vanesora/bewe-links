@@ -51,7 +51,7 @@ export const AtomButtonIcon: FunctionComponent<IIconButtonProps> = ({
     >
         <IconContainer>
           <AtomIcon
-            size={size == "large" ? 24 : size == "medium" ? 18 : 15}
+            size={size == "large" ? 40 : size == "medium" ? 25 : 15}
             color={getColorFromButtonIcon(color, customColor)}
             icon={icon}
           />

@@ -15,7 +15,7 @@ export const AtomSubtitle: FunctionComponent<ITypographyProps> = ({
   size,
   text,
   color,
-  weight = "thin",
+  weight = "500",
   styles = {},
 }: ITypographyProps) => {
   const { theme } = useSelector((state: AppState) => state.setup);
@@ -27,6 +27,7 @@ export const AtomSubtitle: FunctionComponent<ITypographyProps> = ({
           color={color ? theme[color] : theme.neutral700}
           align={align}
           styles={styles}
+          weight={weight}
         >
           {text}
         </SubtitleXLarge>
@@ -37,6 +38,7 @@ export const AtomSubtitle: FunctionComponent<ITypographyProps> = ({
           color={color ? theme[color] : theme.neutral700}
           align={align}
           styles={styles}
+          weight={weight}
         >
           {text}
         </SubtitleLarge>
@@ -47,6 +49,7 @@ export const AtomSubtitle: FunctionComponent<ITypographyProps> = ({
           color={color ? theme[color] : theme.neutral700}
           align={align}
           styles={styles}
+          weight={weight}
         >
           {text}
         </SubtitleMedium>
@@ -57,6 +60,7 @@ export const AtomSubtitle: FunctionComponent<ITypographyProps> = ({
           color={color ? theme[color] : theme.neutral700}
           align={align}
           styles={styles}
+          weight={weight}
         >
           {text}
         </SubtitleSmall>
@@ -67,6 +71,7 @@ export const AtomSubtitle: FunctionComponent<ITypographyProps> = ({
           color={color ? theme[color] : theme.neutral700}
           align={align}
           styles={styles}
+          weight={weight}
         >
           {text}
         </SubtitleXSmall>

@@ -1,6 +1,5 @@
 import { client } from '../../../api';
-import { getItem, getItemObject, removeItem, setItem } from '../../../helpers/storage';
-import { takeEvery, put, call, all } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import {
   signupCompleted,
   signupFailure,
@@ -11,6 +10,7 @@ import {
   ISignupResponse,
 } from '../ducks/signup';
 import { IAction, IGenericResponse } from '../../../interfaces/global';
+import { removeItem } from '../../../helpers/storage';
 
 export const signup = (payload: ISignupData) =>
   client.post<IGenericResponse>(

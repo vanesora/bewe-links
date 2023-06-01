@@ -11,7 +11,9 @@ export interface ILoginResponse {
   name: string;
 }
 
-export interface ILoginState extends IStateStatus {};
+export interface ILoginState extends IStateStatus {
+  user: ILoginResponse;
+};
 
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_PENDING = 'LOGIN_PENDING';
@@ -48,6 +50,11 @@ const initialState: ILoginState = {
   message: '',
   pending: false,
   success: false,
+  user:{
+    email:'',
+    name: '',
+    token: ''
+  }
 };
 
 const loginReducer = (
@@ -66,6 +73,7 @@ const loginReducer = (
         ...state,
         pending: false,
         success: true,
+        user: payload
       };
     case LOGIN_FAILURE:
       return {
