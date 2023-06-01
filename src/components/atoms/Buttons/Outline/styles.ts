@@ -38,7 +38,7 @@ export const GeneralStyledBtn = styled.button`
       : colorPalette[color]};
   display: flex;
   font-size: ${({ size }: IStylesProps) =>
-    size === "small" ? "12px" : "16px"};
+  size === "small" ? "10px" : size === "medium" ? "14px" : "18px"};
   font-weight: 700;
   height: ${({ size }: IStylesProps) => ButtonHeight[size]};
   justify-content: center;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImageDefault from "../../../assets/images/default.png";
 import { Img } from "./styles";
 import { CSSObject } from "styled-components";
@@ -27,9 +27,10 @@ export const AtomImage = ({
   ...props
 }: IImageProps):JSX.Element => {
   const [imgSrc, setImgSrc] = useState(src);
-  React.useEffect(() => {
+  useEffect(() => {
     const img = src || ImageDefault;
     setImgSrc(img);
+    
   }, [src]);
   return (
     <Img

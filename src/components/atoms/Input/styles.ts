@@ -1,5 +1,5 @@
 import styled, { CSSObject } from "styled-components";
-import { ITheme } from "../../../../interfaces/setupInterface";
+import { ITheme } from "../../../interfaces/setupInterface";
 
 interface IStylesProps {
   readOnly?: boolean;
@@ -9,7 +9,7 @@ interface IStylesProps {
   colorPalette: ITheme;
 }
 
-export const InputEmail = styled.input`
+export const Input = styled.input`
   ${({ styles }) => styles};
   outline: 0;
   padding: 10px 15px;
@@ -21,12 +21,12 @@ export const InputEmail = styled.input`
     colorPalette,
   }: IStylesProps) =>
     disabled === true
-      ? colorPalette?.neutral300
+      ? colorPalette?.neutral200
       : readOnly === true
       ? colorPalette?.transparent
       : hasError
       ? colorPalette?.secondary400
-      : colorPalette?.neutral400};
+      : colorPalette?.neutral300};
   background-color:${({ readOnly, disabled, colorPalette }: IStylesProps) =>
     disabled === true
       ? colorPalette?.neutral300
@@ -39,6 +39,9 @@ export const InputEmail = styled.input`
   width: 100%;
   height: 48px;
   border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Montserrat';
 
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;

@@ -5,29 +5,15 @@ export interface ILoginData {
   password: string;
 }
 
-export interface IDataLogin {
-  user: string;
-  password: string;
-  time_zone: string;
-  platform: string;
-  program: string;
-  origin: string;
-  agent: string;
-}
-
 export interface ILoginResponse {
-  idToken: string;
-  exp: number;
+  token: string;
   email: string;
   name: string;
-  refreshToken: string;
-  accessToken: string;
 }
 
 export interface ILoginState extends IStateStatus {};
 
 export const LOGIN_START = 'LOGIN_START';
-export const LOGINSOCIAL_START = 'LOGINSOCIAL_START';
 export const LOGIN_PENDING = 'LOGIN_PENDING';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
@@ -35,10 +21,6 @@ export const LOGIN_COMPLETED = 'LOGIN_COMPLETED';
 
 export const loginStart = (payload: ILoginData) => ({
   type: LOGIN_START,
-  payload
-});
-export const loginSocialStart = (payload: any) => ({
-  type: LOGINSOCIAL_START,
   payload
 });
 

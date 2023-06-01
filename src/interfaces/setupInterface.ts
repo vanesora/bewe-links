@@ -8,21 +8,14 @@ export interface IScreen {
 
 export interface ILogIn {
   pageTitle: string;
-  title: string;
-  labelInstruction: string;
   labelEmail: string;
   labelPassword: string;
   placeholderEmail: string;
   placeholderPassword: string;
   btnSignin: string;
-  btnSignup: string;
-  modalAccept: string;
   errorMessageDefault: string;
-  btnChangePassword: string;
-  labelOr: string;
-  continueWith: string;
-  tagginMsgResSubmit: string;
-  tagginMsgResSuccess: string;
+  errorInputEmail: string;
+  errorInputPassword: string;
 }
 
 export interface ISignup {
@@ -42,7 +35,9 @@ export interface ISignup {
 }
 
 export interface IButtonsNav {
-  pageTitle: string;
+  logout: string;
+  login: string;
+  signup: string;
 }
 export interface ILinks {
   pageTitle: string;

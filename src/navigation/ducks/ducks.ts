@@ -1,37 +1,37 @@
 import { IAction, IGenericErrorResponse, IStateStatus } from '../../interfaces/global';
 
-export interface IPath extends IStateStatus {
-  path: string;
+export interface ILoggedIn extends IStateStatus {
+  loggedIn: boolean;
 }
 
 // ACTION TYPES
-export const GET_SCHEMA_PATH_REQUEST = 'GET_SCHEMA_PATH_REQUEST';
-export const GET_SCHEMA_PATH_PENDING = 'GET_SCHEMA_PATH_PENDING';
-export const GET_SCHEMA_PATH_SUCCESS = 'GET_SCHEMA_PATH_SUCCESS';
-export const GET_SCHEMA_PATH_FAILURE = 'GET_SCHEMA_PATH_FAILURE';
+export const GET_LOGGED_IN_REQUEST = 'GET_LOGGED_IN_REQUEST';
+export const GET_LOGGED_IN_PENDING = 'GET_LOGGED_IN_PENDING';
+export const GET_LOGGED_IN_SUCCESS = 'GET_LOGGED_IN_SUCCESS';
+export const GET_LOGGED_IN_FAILURE = 'GET_LOGGED_IN_FAILURE';
 
 // ACTIONS
-export const getPathStart = () => ({
-  type: GET_SCHEMA_PATH_REQUEST
+export const getLoggedInStart = () => ({
+  type: GET_LOGGED_IN_REQUEST
 });
 
-export const getPathPending = () => ({
-  type: GET_SCHEMA_PATH_PENDING,
+export const getLoggedInPending = () => ({
+  type: GET_LOGGED_IN_PENDING,
 });
 
-export const getPathSuccess = (payload: string) => ({
-  type: GET_SCHEMA_PATH_SUCCESS,
+export const getLoggedInSuccess = (payload: boolean) => ({
+  type: GET_LOGGED_IN_SUCCESS,
   payload
 });
 
-export const getPathFailure = (payload: IGenericErrorResponse) => ({
-  type: GET_SCHEMA_PATH_FAILURE,
+export const getLoggedInFailure = (payload: IGenericErrorResponse) => ({
+  type: GET_LOGGED_IN_FAILURE,
   payload
 });
 
 //REDUCER
-const initialState: IPath = { 
-  path: '/', 
+const initialState: ILoggedIn = { 
+  loggedIn: false, 
   errorMessage: '',
   errorCode: '',
   message: '',
@@ -39,25 +39,25 @@ const initialState: IPath = {
   success: false,
 };
 
-const pathReducer = (
+const loggedInReducer = (
   state = initialState,
   { type, payload }: IAction,
-): IPath => {
+): ILoggedIn => {
   switch (type) {
-    case GET_SCHEMA_PATH_PENDING:
+    case GET_LOGGED_IN_PENDING:
       return {
         ...state,
         pending: true,
         success: false,
       };
-    case GET_SCHEMA_PATH_SUCCESS:
+    case GET_LOGGED_IN_SUCCESS:
       return {
         ...state,
-        path: payload,
+        loggedIn: payload,
         pending: false,
         success: true,
       };
-    case GET_SCHEMA_PATH_FAILURE:
+    case GET_LOGGED_IN_FAILURE:
       return {
         ...state,
         pending: false,
@@ -69,4 +69,4 @@ const pathReducer = (
   }
 }
 
-export default pathReducer;
+export default loggedInReducer;

@@ -1,42 +1,46 @@
 import React, {
   Fragment,
   FunctionComponent,
-  ReactElement,
   useEffect,
   useState,
   useMemo,
 } from "react";
 import Loading from "../components/atoms/Loading";
 import { Routes, useLocation, Route } from "react-router-dom";
-import { getItem, setItem } from "../helpers/storage";
 import { connect } from "react-redux";
 import { ContainerNav } from "./styles";
 import { AppState } from "../store/rootReducer";
-import { IPath } from "./ducks/ducks";
+import { ILoggedIn, getLoggedInStart } from "./ducks/ducks";
 import Login from "../screens/Login/Login";
 import User from "../screens/User/User";
 import Signup from "../screens/Signup/Signup";
-import { Navigate, useNavigate } from "react-router";
+import { Navigate } from "react-router";
+import { useWindowWidth } from "../hooks/useWindowWidth";
+import { ISetupState } from "../store/setup/ducks";
+import { IAction } from "../interfaces/global";
 
 interface IProps {
-  pathActualSate: IPath;
+  loggedInSate: ILoggedIn;
+  setup: ISetupState;
+  getLoggedInStart: () => IAction;
 }
 
 const mapDispatchToProps = {
+  getLoggedInStart,
 };
 
 const mapStateToProps = (state: AppState) => ({
-  pathActualSate: state.pathActual,
+  loggedInSate: state.loggedIn,
+  setup: state.setup,
 });
 
-const Online = ({ loggedIn }: { loggedIn: boolean }) => {
+const Online = ({ loggedIn }: { loggedIn: boolean}) => {
+  const sizeWindow = useWindowWidth();
+
   return (
     <>
       <Fragment>
-        <ContainerNav>
-          {/* {<SideNavBar />} */}
-          <div>
-            <div className="scrollWidth">
+        <ContainerNav height={sizeWindow.height+'px'}>
               <Routes>
                 <Route path="/" element=
                   {loggedIn ? <User /> : <Login />}>
@@ -46,8 +50,6 @@ const Online = ({ loggedIn }: { loggedIn: boolean }) => {
                 <Route path="/user"element={loggedIn ? <User /> : <Navigate to="/login"/>}></Route>
                 <Route path='*' element={<Navigate to='/' />} />
               </Routes>
-            </div>
-          </div>
         </ContainerNav>
       </Fragment>
     </>
@@ -56,27 +58,31 @@ const Online = ({ loggedIn }: { loggedIn: boolean }) => {
 
 
 const NavigationRouter: FunctionComponent<IProps> = ({
-  pathActualSate,
+  loggedInSate,
+  setup,
+  getLoggedInStart
 }: IProps) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const history = useNavigate();
   const location = useLocation();
   const localPath = useMemo(() => location.pathname, [location]);
 
 
   useEffect(() => {
-    const startAuth = async () => {
-      const idToken = (await getItem("token")) || "";
-      if (idToken) {
-        setLoggedIn(true);
-      } else{
-        setLoggedIn(false);
-      }
-    };
-    startAuth();
+    getLoggedInStart();
   }, [localPath]);
+
+  useEffect(() => {
+    setIsLoading(loggedInSate.pending);
+  }, [loggedInSate.pending]);
+
+  useEffect(() => {
+    if (loggedInSate.success) {
+      setLoggedIn(loggedInSate.loggedIn);
+    }
+  }, [loggedInSate.success]);
+
   return (
     <>
       {isLoading? (

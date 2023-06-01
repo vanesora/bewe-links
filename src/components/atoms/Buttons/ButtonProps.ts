@@ -11,7 +11,7 @@ export type ButtonSize = "small" | "medium" | "large";
 
 export interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Enable or disable the button */
-  disabled: boolean;
+  disabled?: boolean;
   /** Click action */
   onClick?: (e?: any) => void;
   /** Type of color */
@@ -32,6 +32,6 @@ export interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const ButtonHeight = {
   small: "32px",
-  medium: "48px",
-  large: "64px",
+  medium: "42px",
+  large: "50px",
 };

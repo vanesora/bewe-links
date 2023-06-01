@@ -15,7 +15,7 @@ export const AtomHeadline = ({
   size,
   text,
   color,
-  weight = "thin",
+  weight = "500",
   styles = {},
 }: ITypographyProps): JSX.Element => {
   const { theme } = useSelector((state: AppState) => state.setup);

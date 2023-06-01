@@ -43,23 +43,11 @@ export const HeadlineLarge = styled.h4`
   text-align: ${({ align }: IStylesProps) => align};
   color: ${({ color }: IStylesProps) => color};
   white-space: break-spaces;
-
-  @media (max-width: ${mobile.max} ) {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 24px;
-  }
-
-  @media (min-width: ${tablet.min}) and (max-width: ${tablet.max} ) {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 32px;
-  }
 `;
 
 export const HeadlineMedium = styled.h5`
   ${({ styles }) => styles};
-  font-size: 22px;
+  font-size: 25px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
@@ -68,22 +56,11 @@ export const HeadlineMedium = styled.h5`
   color: ${({ color }: IStylesProps) => color};
   white-space: break-spaces;
 
-  @media (max-width: ${mobile.max} ) {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-  }
-
-  @media (min-width: ${tablet.min}) and (max-width: ${tablet.max} ) {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
-  }
 `;
 
 export const HeadlineSmall = styled.h6`
   ${({ styles }) => styles};
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
@@ -91,18 +68,6 @@ export const HeadlineSmall = styled.h6`
   text-align: ${({ align }: IStylesProps) => align};
   color: ${({ color }: IStylesProps) => color};
   white-space: break-spaces;
-
-  @media (max-width: ${mobile.max} ) {
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-  }
-
-  @media (min-width: ${tablet.min}) and (max-width: ${tablet.max} ) {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-  }
 `;
 
 export const HeadlineXSmall = styled.h6`
@@ -115,15 +80,4 @@ export const HeadlineXSmall = styled.h6`
   text-align: ${({ align }: IStylesProps) => align};
   color: ${({ color }: IStylesProps) => color};
   white-space: break-spaces;
-
-  @media (max-width: ${mobile.max} ) {
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 20px;
-  }
-
-  @media (min-width: ${tablet.min}) and (max-width: ${tablet.max} ) {
-    font-weight: 500;
-    line-height: 20px;
-  }
 `;

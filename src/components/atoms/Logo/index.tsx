@@ -2,6 +2,9 @@ import React, { useMemo, useContext } from "react";
 import { ILogoSize, ILogoText } from "./types";
 import { CSSObject } from "styled-components";
 import { AtomImage } from "../Image";
+import ImageLogo from "../../../assets/images/logo.svg";
+import ImageLogoText from "../../../assets/images/logoText.svg";
+import { ContainerLogo } from "./styles";
 
 export interface ILogoProps {
   /** Logo Size */
@@ -14,8 +17,6 @@ export interface ILogoProps {
   style?: CSSObject;
 }
 
-
-
 export const AtomLogo = ({
   size,
   text = "none",
@@ -23,15 +24,14 @@ export const AtomLogo = ({
   style = {},
 }: ILogoProps) => {
   return (
-    <>
+    <ContainerLogo size={size === "large" ? "90px": size === "medium" ? "50px" : "30px"}>
       <AtomImage
-        src="../../../assets/images/logo.png"
+        src={text === 'none'? ImageLogo : ImageLogoText}
         alt="logo"
-        imgWidth={size === "large" ? "20px": size === "medium" ? "15px" : "10px"}
+        imgWidth={size === "large" ? "90px": size === "medium" ? "50px" : "30px"}
         styles={style}
         className={className}
       />
-      {text === "centered" && <h1>{'TOWPEAKS'}</h1>}
-    </>
+    </ContainerLogo>
   );
 };

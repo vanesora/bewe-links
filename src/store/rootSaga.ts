@@ -1,11 +1,13 @@
 import { all, fork } from "redux-saga/effects";
-import pathActualSaga from "../navigation/sagas";
+import loggedInActualSaga from "../navigation/sagas/sagas";
 import setupSaga from "./setup/sagas";
+import loginSaga from "../screens/Login/sagas/login";
 
 
 const sagas = [
-  pathActualSaga,
+  loggedInActualSaga,
   setupSaga,
+  loginSaga
 ];
 
 export default function* rootSaga() {

@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
-import pathReducer from "../navigation/ducks/ducks";
+import loggedInReducer from "../navigation/ducks/ducks";
 import setUpReducer from "./setup/ducks";
+import loginReducer from "../screens/Login/ducks/login";
 
 const rootReducer = combineReducers({
-  pathActual: pathReducer,
+  loggedIn: loggedInReducer,
   setup: setUpReducer,
+  login: loginReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

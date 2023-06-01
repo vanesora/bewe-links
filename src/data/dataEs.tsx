@@ -9,23 +9,16 @@ export const esSetup: ISetup = {
   },
   screen: {
     login: {
-      pageTitle: "Sign In",
-      title: "Welcome Beer Lover!",
-      labelInstruction: "Sign in to MyCooler",
-      labelEmail: "E-mail",
+      pageTitle: "Login",
+      labelEmail: "Your Email",
       labelPassword: "Password",
       placeholderEmail: "Enter a valid email",
       placeholderPassword: "Enter your password",
-      btnSignin: "Log In",
-      btnSignup: "Not a member yet? Sign up here!",
-      modalAccept: "Ok",
+      btnSignin: "Login",
       errorMessageDefault:
         "There is an error trying to log in, please try again or contact technical support.",
-      btnChangePassword: "Forgot password?",
-      labelOr: "Or",
-      continueWith: "Continue with",
-      tagginMsgResSubmit: "submit",
-      tagginMsgResSuccess: "success",
+      errorInputEmail: "You must enter your email.",
+      errorInputPassword: "You must enter your password.",
     },
     signup: {
       pageTitle: "Sign Up",
@@ -82,10 +75,12 @@ export const esSetup: ISetup = {
       },
     },
     links: {
-      pageTitle: "string"
+      pageTitle: "string",
     },
     buttonsNav: {
-      pageTitle: "Profile",
+      logout: "LOGOUT",
+      login: "LOGIN",
+      signup: "SIGNUP",
     },
   },
   theme: {
@@ -107,5 +102,5 @@ export const esSetup: ISetup = {
     neutral600: "#607781",
     neutral700: "#132730",
     transparent: "transparent",
-  }
+  },
 };

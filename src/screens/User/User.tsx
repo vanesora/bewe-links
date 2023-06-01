@@ -6,7 +6,6 @@ interface IProps {
 }
 
 const mapStateToProps = (state: AppState) => ({
-  setup: state.pathActual,
 });
 
 const mapDispatchToProps = {

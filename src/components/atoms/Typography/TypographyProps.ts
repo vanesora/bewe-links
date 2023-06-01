@@ -3,16 +3,7 @@ import { keysTheme } from "../../../data/dataEn";
 
 export type IAlign = "left" | "center" | "right";
 export type ISize = "xlarge" | "large" | "medium" | "small" | "xsmall";
-export type IWeightFont =
-  | "thin"
-  | "extralight"
-  | "light"
-  | "regular"
-  | "medium"
-  | "semibold"
-  | "bold"
-  | "extrabold"
-  | "black";
+
 
 export interface ITypographyProps {
   /** Align text horizontally */
@@ -26,7 +17,7 @@ export interface ITypographyProps {
   /** Text to display in the component, you can insert line breaks using string with backquote by entering enter key */
   text: string;
   /** Text weight */
-  weight?: IWeightFont;
+  weight?: string;
   /** Click action */
   onClick?: (e?: any) => void;
 }
