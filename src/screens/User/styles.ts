@@ -1,24 +1,49 @@
-import styled from 'styled-components';
-import { enSetup } from '../../data/dataEn';
+import styled from "styled-components";
 
-export const ContainerMenu = styled.div`
-    height: 100%;
-    margin-top: 25px;
-    max-width: 300px;
-    min-height: calc(100vh - 345px);
-    width: 90%;
-    .button{
-        color: transparent
-    }
+export interface IStylesProps {
+  height: string;
+}
+export interface ICardsBodyProps {
+  direction: string;
+}
+export const FormLinks = styled.form``;
 
-    @media (min-width: ${defaultProps => defaultProps.theme.grid.small.value}) {
-        min-height: calc(100vh - 117px);
-        min-width: 200px;
-        width: 290px;
-    }
+export const ContainerButton = styled.div`
+  margin: 40px 0;
+`;
 
-    /* @media (min-width: ${defaultProps => defaultProps.theme.grid.medium.value}) {
-        min-height: calc(100vh - 279px);
-        padding-left: 75px;
-    } */
-`
+
+export const ContainerLinks = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: ${({ height }: IStylesProps) => height};
+`;
+
+
+export const ContainerBody = styled.div`
+  width : 100%;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  flex-direction: ${({ direction }: ICardsBodyProps) => direction};
+`;
+
+export const ContainerSubHeader = styled.div`
+  width : 100%;
+  display: flex;
+  justify-content: left;
+    align-items: center;
+`;
+
+export const ContainerSelect = styled.div`
+  width : 100%;
+  margin-top: 10px;
+    margin-bottom: 20px;
+`;
+
+

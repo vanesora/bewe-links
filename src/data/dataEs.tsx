@@ -41,41 +41,13 @@ export const esSetup: ISetup = {
     },
     profile: {
       title: "Profile",
-      labelFirstName: "First name",
-      labelLastName: "Last name",
-      labelBirthdate: "Date of birth",
-      labelGender: "Gender",
       labelEmail: "Email",
-      labelPhone: "Phone",
-      labelPhoneCode: "Country code",
-      labelState: "State",
-      labelZipCode: "Zip code",
-      placeholderFirstName: "Beer",
-      placeholderLastName: "Lover",
-      placeholderBirthdate: "",
-      placeholderGender: "",
-      placeholderEmail: "",
-      placeholderPhone: "",
-      placeholderState: "",
-      placeholderZipCode: "",
-      btnSave: "Save",
-      referral: {
-        title: "Invite friends",
-        description:
-          "Refer friends and earn 250 points when they sign up with your code!",
-        customLink: "Custom referral link",
-        copyLink: "Copy Link",
-      },
-      update: {
-        handleAction: "Update",
-        modal: {
-          button: "Ok",
-          errorMessage: "Unable to update your profile, please try again!",
-          successTitle: "Your profile is now updated!",
-          successMessage:
-            "Your profile information has been updated successfully.",
-        },
-      },
+      labelName: "Name",
+      labelLocation: "Location",
+      errorInputEmail: "You must enter the url.",
+      errorInputLocation: "You must enter the location.",
+      errorInputName: "You must enter the name.",
+      btn: "SAVE"
     },
     links: {
       labelUrl: "Url to save",

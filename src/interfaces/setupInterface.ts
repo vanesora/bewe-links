@@ -52,39 +52,13 @@ export interface ILinks {
 
 export interface IProfile {
   title: string;
-  labelFirstName: string;
-  labelLastName: string;
-  labelBirthdate: string;
-  labelGender: string;
   labelEmail: string;
-  labelPhone: string;
-  labelPhoneCode: string;
-  labelState: string;
-  labelZipCode: string;
-  placeholderFirstName: string;
-  placeholderLastName: string;
-  placeholderBirthdate: string;
-  placeholderGender: string;
-  placeholderEmail: string;
-  placeholderPhone: string;
-  placeholderState: string;
-  placeholderZipCode: string;
-  btnSave: string;
-  referral: {
-    title: string;
-    description: string;
-    customLink: string;
-    copyLink: string;
-  };
-  update: {
-    handleAction: string;
-    modal: {
-      button: string;
-      errorMessage: string;
-      successTitle: string;
-      successMessage: string;
-    };
-  };
+  labelName: string;
+  labelLocation: string;
+  errorInputEmail: string;
+  errorInputLocation: string;
+  errorInputName: string;
+  btn: string;
 }
 
 export interface ITheme {
