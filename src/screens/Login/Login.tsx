@@ -27,7 +27,6 @@ export type LoginFormFields = {
   email: string;
   password: string;
 };
-
 interface IProps {
   setup: ISetupState;
   loginState: ILoginState;
@@ -40,15 +39,19 @@ const mapStateToProps = (state: AppState) => ({
 });
 
 const mapDispatchToProps = {
-  loginStart
+  loginStart,
 };
 
-const Login: FunctionComponent<IProps> = ({ setup, loginState, loginStart }) => {
+const Login: FunctionComponent<IProps> = ({
+  setup,
+  loginState,
+  loginStart,
+}) => {
   const { screen } = setup;
   const { login } = screen;
   const sizeWindow = useWindowWidth();
   const navigate = useNavigate();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const {
     register,
@@ -57,26 +60,30 @@ const Login: FunctionComponent<IProps> = ({ setup, loginState, loginStart }) => 
   } = useForm<LoginFormFields>();
 
   const onSubmit = handleSubmit((data) => {
-    loginStart({email:data.email, password: data.password});
-    setError('')
+    loginStart({ email: data.email, password: data.password });
+    setError("");
   });
 
   const handleButtonMenu = () => {
-    navigate('/signup');
+    navigate("/signup");
   };
 
   useEffect(() => {
-    console.log(loginState);
-    setError(loginState.errorMessage
-      ? loginState.errorMessage
-      : 'Error')
-  }, [loginState]);
+    if (loginState.errorMessage) {
+      setError(loginState.errorMessage ? loginState.errorMessage : "Error");
+    }
+  }, [loginState.errorMessage]);
 
+  useEffect(() => {
+    if (loginState.success) {
+      navigate("/links");
+    }
+  }, [loginState.success]);
 
   return (
-    <ContainerLogin height={sizeWindow.height+'px'}>
+    <ContainerLogin height={sizeWindow.height + "px"}>
       <AtomCardContainer
-        height={ "100%"}
+        height={"100%"}
         width={sizeWindow.width < 406 ? "calc(100% - 72px)" : "400px"}
         shadowSize={sizeWindow.width < 406 ? "noshadow" : "large"}
         padding="36px"
@@ -117,7 +124,15 @@ const Login: FunctionComponent<IProps> = ({ setup, loginState, loginStart }) => 
               rules={{ required: login.errorInputPassword }}
               errors={errors}
             />
-            {error && <AtomBody size="large" text={error} color="secondary300" weight="600" align="left" />}
+            {error && (
+              <AtomBody
+                size="large"
+                text={error}
+                color="secondary300"
+                weight="600"
+                align="left"
+              />
+            )}
             <ContainerButton>
               <AtomButtonDefault
                 color="primary"

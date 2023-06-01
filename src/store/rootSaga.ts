@@ -4,6 +4,7 @@ import setupSaga from "./setup/sagas";
 import loginSaga from "../screens/Login/sagas/login";
 import logoutSaga from "../screens/Login/sagas/logout";
 import signupSaga from "../screens/Signup/sagas/signup";
+import linksSaga from "../screens/Links/sagas/links";
 
 
 const sagas = [
@@ -11,7 +12,8 @@ const sagas = [
   setupSaga,
   loginSaga,
   signupSaga,
-  logoutSaga
+  logoutSaga,
+  linksSaga
 ];
 
 export default function* rootSaga() {

@@ -4,11 +4,19 @@ export interface ILoginData {
   email: string;
   password: string;
 }
-
 export interface ILoginResponse {
   token: string;
   email: string;
   name: string;
+}
+
+export interface ILoginResponseBack {
+  data:{
+    email: string;
+    name: string;
+    id: string
+  },
+  token: string;
 }
 
 export interface ILoginState extends IStateStatus {

@@ -10,7 +10,7 @@ export interface ILinksDuck {
 export interface ILinks {
   name: string;
   url: string;
-  id: string;
+  id?: string;
 }
 
 export const GET_LINKS_REQUEST = "GET_LINKS_REQUEST";
@@ -67,7 +67,7 @@ const initialState: ILinksDuck = {
   links: [],
 };
 
-const logoutRedirectReducer = (
+const linksReducer = (
   state = initialState,
   { type, payload }: IAction
 ): ILinksDuck => {
@@ -101,7 +101,8 @@ const logoutRedirectReducer = (
     case DELETE_LINKS_SUCCESS:
       return {
         ...state,
-        success: false,
+        links: payload,
+        success: true,
         pending: false,
       };
     default:
@@ -109,4 +110,4 @@ const logoutRedirectReducer = (
   }
 };
 
-export default logoutRedirectReducer;
+export default linksReducer;

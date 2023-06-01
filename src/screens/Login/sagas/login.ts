@@ -13,10 +13,11 @@ import {
   LOGIN_START,
   ILoginResponse,
   ILoginData,
+  ILoginResponseBack,
 } from "../ducks/login";
 
 export const login = (data: ILoginData) =>
-  client.post<ILoginResponse>("auth/login", data,  {
+  client.post<ILoginResponseBack>("auth/login", data,  {
     headers: {
       "Content-Type": "application/json",
     },
@@ -34,21 +35,21 @@ function* _login({ payload }: IAction): any {
   try {
     yield put(loginPending());
     const {
-      email,
+      data,
       token,
-      name,
-    }: ILoginResponse = yield call(postLogin, payload);
+    }: ILoginResponseBack = yield call(postLogin, payload);
     yield call(setItem, 'token', token);
-    yield call(setItem, 'email', email);
-    yield call(setItem, 'name', name);
+    yield call(setItem, 'email', data.email);
+    yield call(setItem, 'name', data.name);
+    yield call(setItem, 'id', data.id);
     yield put(loginCompleted());
-    yield put(loginSuccess({email, token, name}));
+    yield put(loginSuccess({email: data.email, token, name: data.name}));
   } catch (error: any) {
     let code: string = "";
     let message: string = "";
     if (error.message === "User is not confirmed.") {
       code = "UserNotConfirmedException";
-      message = "";
+      message = "error";
     } else {
       message = error.message;
       code = "";

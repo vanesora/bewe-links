@@ -21,6 +21,7 @@ import { useForm } from "react-hook-form";
 import { MoleculeProfileEdition } from "../../components/molecules/ProfileEdition";
 import ImageProfile from "../../assets/images/foto.jpg";
 import { MoleculeDescription } from "../../components/molecules/Description";
+import { ILinks, ILinksDuck, getLinksStart, createLinksStart, deleteLinksStart } from "./ducks/links";
 
 export type LinksFormFields = {
   url: string;
@@ -30,73 +31,38 @@ export type LinksFormFields = {
 interface IProps {
   setup: ISetupState;
   logout: ILogoutStateDuck;
+  linksState: ILinksDuck;
   logoutStart: () => void;
+  getLinksStart: () => void;
+  createLinksStart: (payload: {name: string, url: string, actualList: ILinks[]}) => void;
+  deleteLinksStart: (payload: {id: string, actualList: ILinks[]}) => void
 }
 
 const mapStateToProps = (state: AppState) => ({
   setup: state.setup,
   logout: state.logout,
+  linksState: state.links
 });
 
 const mapDispatchToProps = {
   logoutStart,
+  getLinksStart,
+  createLinksStart,
+  deleteLinksStart
 };
 
 const Links: FunctionComponent<IProps> = ({
   setup,
-  logout,
   logoutStart,
+  linksState,
+  getLinksStart,
+  createLinksStart,
+  deleteLinksStart
 }: IProps) => {
   const { screen } = setup;
   const { links } = screen;
   const [user, setUser] = useState({ name: "", email: "" });
-  const [listUrls, setListUrls] = useState([
-    {
-      url: "www.url.com",
-      name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      id: "1",
-    },
-    {
-      url: "www.url.com",
-      name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      id: "2",
-    },
-    {
-      url: "www.url.com",
-      name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      id: "3",
-    },
-    {
-      url: "www.url.com",
-      name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      id: "4",
-    },
-    {
-      url: "www.url.com",
-      name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      id: "5",
-    },
-    {
-      url: "www.url.com",
-      name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      id: "6",
-    },
-    {
-      url: "www.url.com",
-      name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      id: "7",
-    },
-    {
-      url: "www.url.com",
-      name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      id: "8",
-    },
-    {
-      url: "www.url.com",
-      name: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      id: "9",
-    },
-  ]);
+  const [listUrls, setListUrls] = useState<ILinks[]>([]);
   const sizeWindow = useWindowWidth();
   const navigate = useNavigate();
 
@@ -112,11 +78,21 @@ const Links: FunctionComponent<IProps> = ({
   };
 
   const handleButtonDelete = (id: string) => {
-    console.log('delete: ', id);
-    
+    const payload ={
+      id,
+      actualList: [...linksState.links]
+    }
+    deleteLinksStart(payload)
   };
 
-  const onSubmit = handleSubmit((data) => {});
+  const onSubmit = handleSubmit((data) => {
+    const payload ={
+      name: data.name,
+      url: data.url,
+      actualList: [...linksState.links]
+    }
+    createLinksStart(payload)    
+  });
 
   useEffect(() => {
     const getUser = async () => {
@@ -126,6 +102,18 @@ const Links: FunctionComponent<IProps> = ({
     };
     getUser();
   }, []);
+
+  useEffect(() => {
+    getLinksStart();
+  }, []);
+
+  useEffect(() => {
+    if(linksState.success){
+      console.log(linksState);
+      
+      setListUrls(linksState.links)      
+    }
+  }, [linksState]);
 
   return (
     <ContainerLinks height={sizeWindow.height + "px"}>
@@ -185,8 +173,8 @@ const Links: FunctionComponent<IProps> = ({
             </FormLinks>
           </ContainerCards>
           <ContainerCards>
-            {listUrls.map((urls) => {
-              return <MoleculeDescription key={urls.id} url={urls.url} text={urls.name} id={urls.id} onClick={(id)=>handleButtonDelete(id)} />;
+            {listUrls.length>0 && listUrls.map((urls: ILinks) => {
+              return <MoleculeDescription url={urls.url} text={urls.name} id={urls.id?? '1'} onClick={(id)=>handleButtonDelete(id)} />;
             })}
           </ContainerCards>
         </ContainerBody>
