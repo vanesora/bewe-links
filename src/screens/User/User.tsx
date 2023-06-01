@@ -189,7 +189,7 @@ const User: FunctionComponent<IProps> = ({ setup, logoutStart }: IProps) => {
             />
             <ContainerSelect>
               <GooglePlacesAutocomplete
-                apiKey="AIzaSyBqo9VDR_PjR-skuZzoGShni7syXwMtixs"
+                apiKey=""
                 selectProps={{
                   value,
                   onChange: handleOnChange as any,
@@ -199,7 +199,7 @@ const User: FunctionComponent<IProps> = ({ setup, logoutStart }: IProps) => {
 
             {value && (
               <GoogleMap
-                apiKey="AIzaSyBqo9VDR_PjR-skuZzoGShni7syXwMtixs"
+                apiKey=""
                 defaultCenter={{ lat: 45.4046987, lng: 12.2472504 }}
                 defaultZoom={12}
                 mapMinHeight="30vh"
