@@ -1,0 +1,111 @@
+import { ISetup } from "../interfaces/global";
+
+export const esSetup: ISetup = {
+  currentTheme: "Es",
+  dateFormat: {
+    day: "DD",
+    month: "MM",
+    year: "YYYY",
+  },
+  screen: {
+    login: {
+      pageTitle: "Sign In",
+      title: "Welcome Beer Lover!",
+      labelInstruction: "Sign in to MyCooler",
+      labelEmail: "E-mail",
+      labelPassword: "Password",
+      placeholderEmail: "Enter a valid email",
+      placeholderPassword: "Enter your password",
+      btnSignin: "Log In",
+      btnSignup: "Not a member yet? Sign up here!",
+      modalAccept: "Ok",
+      errorMessageDefault:
+        "There is an error trying to log in, please try again or contact technical support.",
+      btnChangePassword: "Forgot password?",
+      labelOr: "Or",
+      continueWith: "Continue with",
+      tagginMsgResSubmit: "submit",
+      tagginMsgResSuccess: "success",
+    },
+    signup: {
+      pageTitle: "Sign Up",
+      title: "Sign Up",
+      btnCreateAccount: "Register",
+      btnCancel: "Cancel",
+      labelThereAreNoField: "Please fill in the information",
+      country: "USA",
+      locale: "en-US",
+      code: "US",
+      modalAccept: "Ok",
+      alreadyMember: "Already a Member? Sign In",
+      socialLoginText:
+        "You can create an account with your e-mail or you can sign up with:",
+      tagginMsgResSubmit: "submit",
+      tagginMsgResSuccess: "success",
+    },
+    profile: {
+      title: "Profile",
+      labelFirstName: "First name",
+      labelLastName: "Last name",
+      labelBirthdate: "Date of birth",
+      labelGender: "Gender",
+      labelEmail: "Email",
+      labelPhone: "Phone",
+      labelPhoneCode: "Country code",
+      labelState: "State",
+      labelZipCode: "Zip code",
+      placeholderFirstName: "Beer",
+      placeholderLastName: "Lover",
+      placeholderBirthdate: "",
+      placeholderGender: "",
+      placeholderEmail: "",
+      placeholderPhone: "",
+      placeholderState: "",
+      placeholderZipCode: "",
+      btnSave: "Save",
+      referral: {
+        title: "Invite friends",
+        description:
+          "Refer friends and earn 250 points when they sign up with your code!",
+        customLink: "Custom referral link",
+        copyLink: "Copy Link",
+      },
+      update: {
+        handleAction: "Update",
+        modal: {
+          button: "Ok",
+          errorMessage: "Unable to update your profile, please try again!",
+          successTitle: "Your profile is now updated!",
+          successMessage:
+            "Your profile information has been updated successfully.",
+        },
+      },
+    },
+    links: {
+      pageTitle: "string"
+    },
+    buttonsNav: {
+      pageTitle: "Profile",
+    },
+  },
+  theme: {
+    primary: "#20BBEC",
+    primary100: "#56CFF5",
+    primary300: "#1499C4",
+    primary400: "#046786",
+    primary500: "#0C4B5F",
+    secondary: "#FF4141",
+    secondary100: "#FF9AA2",
+    secondary300: "#E22525",
+    secondary400: "#B90101",
+    secondary500: "#A90202",
+    neutral100: "#FFFFFF",
+    neutral200: "#F3F8FA",
+    neutral300: "#E7EFF2",
+    neutral400: "#BDCCD1",
+    neutral500: "#91A8B1",
+    neutral600: "#607781",
+    neutral700: "#132730",
+    transparent: "transparent",
+  }
+};
