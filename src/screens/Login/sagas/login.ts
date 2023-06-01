@@ -1,12 +1,10 @@
 import { takeEvery, put, call, all } from "redux-saga/effects";
 import { client } from "../../../api";
 import {
-  getItem,
-  getItemObject,
   removeItem,
   setItem,
 } from "../../../helpers/storage";
-import { IAction, IGenericResponse } from "../../../interfaces/global";
+import { IAction } from "../../../interfaces/global";
 import {
   loginPending,
   loginSuccess,

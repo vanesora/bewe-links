@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from "react";
+import React, { FunctionComponent } from "react";
 import { CSSObject } from "styled-components";
 import { BsTrash } from "react-icons/bs";
 import { BiEdit } from "react-icons/bi";
@@ -16,7 +16,7 @@ export interface IIconProps {
   styles?: CSSObject;
 }
 
-export const AtomIcon = ({
+export const AtomIcon: FunctionComponent<IIconProps> = ({
   size,
   icon,
   color = "neutral700",

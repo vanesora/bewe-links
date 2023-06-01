@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FunctionComponent} from "react";
 import {
   HeadlineXLarge,
   HeadlineLarge,
@@ -10,14 +10,14 @@ import { ITypographyProps } from "../TypographyProps";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../../store/rootReducer";
 
-export const AtomHeadline = ({
+export const AtomHeadline: FunctionComponent<ITypographyProps> = ({
   align = "center",
   size,
   text,
   color,
   weight = "500",
   styles = {},
-}: ITypographyProps): JSX.Element => {
+}: ITypographyProps) => {
   const { theme } = useSelector((state: AppState) => state.setup);
 
   switch (size) {

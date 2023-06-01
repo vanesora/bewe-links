@@ -7,24 +7,30 @@ import {
   signupPending,
   signupSuccess,
   SIGNUP_REQUEST,
+  ISignupData,
+  ISignupResponse,
 } from '../ducks/signup';
 import { IAction, IGenericResponse } from '../../../interfaces/global';
 
-export const tapitSignup = (payload: any) =>
+export const signup = (payload: ISignupData) =>
   client.post<IGenericResponse>(
     'client',
-    payload
+    payload, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
   );
 
 function* _signup({ payload }: IAction) {
   try {
     yield put(signupPending());
-    const { firstName, lastName, birthdate, email, phoneNumber, password, zipcode } = payload;
-
-    
-
+    const {
+      email,
+      name,
+    }: ISignupResponse = yield call(signup, payload);
     yield put(signupCompleted());
-    // fix: find points earned here to add
+    yield put(signupSuccess({email, name}));
 
   } catch (err: any) {
     const error = err.errorObject;
@@ -38,7 +44,6 @@ function* _signup({ payload }: IAction) {
     else if (typeof error.error != 'undefined') {
       errorList = error.error.details ? error.error.details[0].message : error.error;
     }
-    yield removeItem('dataLayerSignup');
     yield put(signupFailure(errorList || error.message || 'Something went wrong'));
     yield put(signupCompleted());
     yield call(removeItem, 'limited_home_ca_tx')

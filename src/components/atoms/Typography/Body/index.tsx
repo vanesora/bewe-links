@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FunctionComponent} from "react";
 import {
   Body
 } from "./styles";
@@ -6,7 +6,7 @@ import { ISize, ITypographyProps } from "../TypographyProps";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../../store/rootReducer";
 
-export const AtomBody = ({
+export const AtomBody: FunctionComponent<ITypographyProps> = ({
   size,
   text,
   color,

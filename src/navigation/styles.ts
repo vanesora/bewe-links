@@ -5,5 +5,5 @@ export interface IStylesProps {
 }
 
 export const ContainerNav = styled.div`
-  height: ${({ height }: IStylesProps) => height};
+  min-height: ${({ height }: IStylesProps) => height};
 `;

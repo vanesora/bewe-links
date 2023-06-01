@@ -20,18 +20,21 @@ export interface ILogIn {
 
 export interface ISignup {
   pageTitle: string;
-  title: string;
-  btnCreateAccount: string;
-  btnCancel: string;
-  modalAccept: string;
-  alreadyMember: string;
-  labelThereAreNoField: string;
-  country: string;
-  locale: string;
-  code: string;
-  socialLoginText: string;
-  tagginMsgResSubmit: string;
-  tagginMsgResSuccess: string;
+  labelEmail: string;
+  labelName: string;
+  labelPassword: string;
+  placeholderEmail: string;
+  placeholderName: string;
+  placeholderPassword: string;
+  btnSignin: string;
+  errorMessageDefault: string;
+  errorInputEmail: string;
+  errorInputName: string;
+  errorInputPassword: string;
+  text1: string;
+  terms: string;
+  text2: string;
+  privacy: string;
 }
 
 export interface IButtonsNav {

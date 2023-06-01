@@ -1,4 +1,4 @@
-import React  from "react";
+import React, { FunctionComponent } from "react";
 import { GeneralStyledBtn, IconContainer } from "./styles";
 import {
   ButtonHeight,
@@ -18,7 +18,7 @@ export interface IIconButtonProps extends IProps {
   iconMarginRight?: string;
 }
 
-export const AtomButtonIcon = ({
+export const AtomButtonIcon: FunctionComponent<IIconButtonProps> = ({
   disabled,
   onClick,
   color,

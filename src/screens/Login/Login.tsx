@@ -26,7 +26,6 @@ import { AtomBody } from "../../components/atoms/Typography/Body";
 export type LoginFormFields = {
   email: string;
   password: string;
-  loginStart: (payload: ILoginData) => void;
 };
 
 interface IProps {
@@ -82,7 +81,6 @@ const Login: FunctionComponent<IProps> = ({ setup, loginState, loginStart }) => 
         width={sizeWindow.width < 406 ? "calc(100% - 72px)" : "400px"}
         shadowSize={sizeWindow.width < 406 ? "noshadow" : "large"}
         padding="36px"
-        margin="10px 0"
         justifyContent="space-around"
       >
         <MoleculeHeader
@@ -111,7 +109,7 @@ const Login: FunctionComponent<IProps> = ({ setup, loginState, loginStart }) => 
 
             <MoleculeInput<LoginFormFields>
               id="password"
-              type="text"
+              type="password"
               name="password"
               label={login.labelPassword}
               placeholder={login.placeholderPassword}

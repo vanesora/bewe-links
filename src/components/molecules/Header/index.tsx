@@ -1,17 +1,17 @@
-import React from "react";
+import React, {FunctionComponent} from "react";
 import { Container, ContainerButtons } from "./styles";
 import { AtomLogo } from "../../atoms/Logo";
 import { AtomButtonOutline } from "../../atoms/Buttons/Outline";
 import { IButtonsNav } from "../../../interfaces/setupInterface";
 
 export interface IHeaderProps {
-  isLogin?: boolean;
+  isLogin: boolean;
   onClick?: () => void;
   text: IButtonsNav;
-  path: string;
+  path?: string;
 }
 
-export const MoleculeHeader = ({
+export const MoleculeHeader: FunctionComponent<IHeaderProps> = ({
   isLogin = false,
   onClick,
   text,

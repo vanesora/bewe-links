@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FunctionComponent} from "react";
 import { Container, TextContainer } from "./styles";
 import { AtomImage } from "../../atoms/Image";
 
@@ -14,7 +14,7 @@ export interface IImageWithTextProps {
   imgAlt: string;
 }
 
-export const MoleculeImageWithText = ({
+export const MoleculeImageWithText: FunctionComponent<IImageWithTextProps> = ({
   containerWidth = "auto",
   containerHeight = "auto",
   bottomMargin = "0px",

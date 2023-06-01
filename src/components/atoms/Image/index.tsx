@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FunctionComponent } from "react";
 import ImageDefault from "../../../assets/images/default.png";
 import { Img } from "./styles";
 import { CSSObject } from "styled-components";
@@ -16,7 +16,7 @@ export interface IImageProps
   styles?: CSSObject;
 }
 
-export const AtomImage = ({
+export const AtomImage: FunctionComponent<IImageProps> = ({
   src,
   alt,
   borderRadius = "0px",
@@ -25,7 +25,7 @@ export const AtomImage = ({
   resizeMode = "contain",
   styles = {},
   ...props
-}: IImageProps):JSX.Element => {
+}: IImageProps) => {
   const [imgSrc, setImgSrc] = useState(src);
   useEffect(() => {
     const img = src || ImageDefault;

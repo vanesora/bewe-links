@@ -1,4 +1,4 @@
-import React from "react";
+import React, {FunctionComponent} from "react";
 import { ITypographyProps } from "../TypographyProps";
 import {
   SubtitleXLarge,
@@ -10,14 +10,14 @@ import {
 import { useSelector } from "react-redux";
 import { AppState } from "../../../../store/rootReducer";
 
-export const AtomSubtitle = ({
+export const AtomSubtitle: FunctionComponent<ITypographyProps> = ({
   align = "center",
   size,
   text,
   color,
   weight = "thin",
   styles = {},
-}: ITypographyProps): JSX.Element => {
+}: ITypographyProps) => {
   const { theme } = useSelector((state: AppState) => state.setup);
 
   switch (size) {

@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from "react";
+import React, { FunctionComponent } from "react";
 import { ILogoSize, ILogoText } from "./types";
 import { CSSObject } from "styled-components";
 import { AtomImage } from "../Image";
@@ -17,7 +17,7 @@ export interface ILogoProps {
   style?: CSSObject;
 }
 
-export const AtomLogo = ({
+export const AtomLogo: FunctionComponent<ILogoProps> = ({
   size,
   text = "none",
   className = "atom__logo",

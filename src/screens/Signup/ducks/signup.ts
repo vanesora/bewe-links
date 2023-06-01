@@ -8,15 +8,24 @@ export interface ISignupStateDuck {
   success: boolean;
 };
 
-// ACTION TYPES
+export interface ISignupData {
+  email: string;
+  password: string;
+  name: string
+}
+
+export interface ISignupResponse {
+  email: string;
+  name: string;
+}
+
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 export const SIGNUP_PENDING = 'SIGNUP_PENDING';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 export const SIGNUP_COMPLETED = 'SIGNUP_COMPLETED';
 
-// ACTIONS
-export const signupStart = (payload: any) => ({
+export const signupStart = (payload: ISignupData) => ({
   type: SIGNUP_REQUEST,
   payload
 });
@@ -25,12 +34,12 @@ export const signupPending = () => ({
   type: SIGNUP_PENDING,
 });
 
-export const signupSuccess = (payload: { status: string }) => ({
+export const signupSuccess = (payload: ISignupResponse) => ({
   type: SIGNUP_SUCCESS,
   payload
 });
 
-export const signupFailure = (payload: string) => ({
+export const signupFailure = (payload: { errorMessage: string, errorCode: string }) => ({
   type: SIGNUP_FAILURE,
   payload
 });
@@ -39,7 +48,6 @@ export const signupCompleted = () => ({
   type: SIGNUP_COMPLETED,
 });
 
-//REDUCER
 const initialState: ISignupStateDuck = {
   errorMessage: '',
   errorCode: '',
@@ -63,16 +71,15 @@ const signupReducer = (
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        message: payload.message,
         pending: false,
         success: true,
       };
     case SIGNUP_FAILURE:
       return {
         ...state,
-        errorMessage: payload,
         pending: false,
-        success: false,
+        errorMessage: payload.errorMessage,
+        errorCode: payload.errorCode,
       };
     case SIGNUP_COMPLETED:
       return {

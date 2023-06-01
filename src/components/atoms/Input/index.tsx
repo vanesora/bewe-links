@@ -1,4 +1,4 @@
-import React, { FunctionComponent, forwardRef, useContext, useEffect, useState } from "react";
+import React, { FunctionComponent, forwardRef} from "react";
 import { Input } from "./styles";
 import { AppState } from "../../../store/rootReducer";
 import { useSelector } from "react-redux";

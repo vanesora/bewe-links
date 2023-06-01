@@ -28,7 +28,7 @@ export const MoleculeInput = <TFormValues extends Record<string, unknown>>({
   label,
   className,
   ...props
-}: IMoleculeInputProps<TFormValues>): JSX.Element => {
+}: IMoleculeInputProps<TFormValues>) => {
   const errorMessages = errors && errors[name];
   const hasError = !!(errors && errorMessages);
 

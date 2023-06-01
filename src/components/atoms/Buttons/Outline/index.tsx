@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { IProps } from "../ButtonProps";
 import { GeneralStyledBtn } from "./styles";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../../store/rootReducer";
 
-export const AtomButtonOutline = ({
+export const AtomButtonOutline: FunctionComponent<IProps> = ({
   disabled,
   onClick,
   color,

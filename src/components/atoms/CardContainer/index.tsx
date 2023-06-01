@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import { StyledCardContainer } from "./styles";
 import { useSelector } from "react-redux";
 import { AppState } from "../../../store/rootReducer";
@@ -29,7 +29,7 @@ export interface ICardContainerProps {
   width: string;
 }
 
-export const AtomCardContainer = ({
+export const AtomCardContainer: FunctionComponent<ICardContainerProps> = ({
   width,
   height,
   children,
@@ -41,7 +41,7 @@ export const AtomCardContainer = ({
   justifyContent = "",
   alignContent = "",
   shadowSize = "regular",
-}: ICardContainerProps): JSX.Element => {
+}: ICardContainerProps) => {
   const [shadow, setShadow] = useState<string>("");
   const { theme } = useSelector((state: AppState) => state.setup);
 
