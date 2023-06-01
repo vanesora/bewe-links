@@ -15,6 +15,18 @@ const rootReducer = combineReducers({
   links: linksReducer
 });
 
+const rootReducerEnhancer: typeof rootReducer = (state: any, action: AnyAction) => {
+
+  // Clear all data in redux store to initial.
+  if (action.type === DESTROY_SESSION) {
+    state = undefined;
+  }
+  // eslint-disable-next-line no-console
+  // console.log({ state, action });
+
+  return appReducer(state, action);
+};
+
 export type AppState = ReturnType<typeof rootReducer>;
 
 export default rootReducer;
