@@ -14,11 +14,12 @@ import { ILoggedIn, getLoggedInStart } from "./ducks/ducks";
 import Login from "../screens/Login/Login";
 import User from "../screens/User/User";
 import Signup from "../screens/Signup/Signup";
-import { Navigate } from "react-router";
+import { Navigate, Outlet } from "react-router";
 import { useWindowWidth } from "../hooks/useWindowWidth";
 import { ISetupState } from "../store/setup/ducks";
 import { IAction } from "../interfaces/global";
 import Links from "../screens/Links/Links";
+import { getItem } from "../helpers/storage";
 
 interface IProps {
   loggedInSate: ILoggedIn;
@@ -35,23 +36,29 @@ const mapStateToProps = (state: AppState) => ({
   setup: state.setup,
 });
 
-const Online = ({ loggedIn }: { loggedIn: boolean}) => {
+const Online = ({ loggedIn }: { loggedIn: boolean }) => {
   const sizeWindow = useWindowWidth();
 
   return (
     <>
       <Fragment>
-        <ContainerNav height={sizeWindow.height+'px'}>
-              <Routes>
-                <Route path="/" element=
-                  {loggedIn ? <Links /> : <Login />}>
-                </Route>
-                <Route path="/signup" element={!loggedIn ? <Signup /> :  <Navigate to="/links"/>}></Route>
-                <Route path="/login" element={!loggedIn ? <Login /> : <Navigate to="/links"/>}></Route>
-                <Route path="/links"element={loggedIn ? <Links /> : <Navigate to="/login"/>}></Route>
-                <Route path="/user"element={loggedIn ? <User /> : <Navigate to="/login"/>}></Route>
-                <Route path='*' element={<Navigate to='/' />} />
-              </Routes>
+        <ContainerNav height={sizeWindow.height + "px"}>
+          <Routes>
+            <Route element={<GuardAuth/>}>
+              <Route path="/links" element={<Links />}></Route>
+              <Route path="/user" element={<User />}></Route>
+            </Route>
+
+            <Route path="/signup" element={<Signup />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route
+              path="/"
+              element={
+                loggedIn ? <Navigate to="/links" /> : <Navigate to="/login" />
+              }
+            ></Route>
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
         </ContainerNav>
       </Fragment>
     </>
@@ -59,40 +66,31 @@ const Online = ({ loggedIn }: { loggedIn: boolean}) => {
 };
 
 
+const mapStateToPropsGuard = (state: AppState) => ({
+  isLoginIn: !!state.loggedIn.loggedIn || !!state.login.user.token ,
+  loggedIn: state.loggedIn.loggedIn,
+  token: state.login.user.token
+});
+
+const GuardAuth = connect(mapStateToPropsGuard)((props: any) => {
+  return props.isLoginIn ? <Outlet /> : <Navigate to="/login" />;
+});
+
 const NavigationRouter: FunctionComponent<IProps> = ({
   loggedInSate,
   setup,
-  getLoggedInStart
+  getLoggedInStart,
 }: IProps) => {
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const location = useLocation();
-  const localPath = useMemo(() => location.pathname, [location]);
-
-
   useEffect(() => {
     getLoggedInStart();
-  }, [localPath]);
-
-  useEffect(() => {
-    setIsLoading(loggedInSate.pending);
-  }, [loggedInSate.pending]);
-
-  useEffect(() => {
-    if (loggedInSate.success) {
-      setLoggedIn(loggedInSate.loggedIn);
-    }
-  }, [loggedInSate.success]);
+  }, []);
 
   return (
     <>
-      {isLoading? (
+      {! loggedInSate.finished  ? (
         <Loading />
       ) : (
-        <Online
-          loggedIn={loggedIn}
-        />
+        <Online loggedIn={loggedInSate.loggedIn} />
       )}
     </>
   );

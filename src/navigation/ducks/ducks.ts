@@ -2,6 +2,7 @@ import { IAction, IGenericErrorResponse, IStateStatus } from '../../interfaces/g
 
 export interface ILoggedIn extends IStateStatus {
   loggedIn: boolean;
+  finished: boolean;
 }
 
 // ACTION TYPES
@@ -32,6 +33,7 @@ export const getLoggedInFailure = (payload: IGenericErrorResponse) => ({
 //REDUCER
 const initialState: ILoggedIn = { 
   loggedIn: false, 
+  finished: false,
   errorMessage: '',
   errorCode: '',
   message: '',
@@ -54,12 +56,14 @@ const loggedInReducer = (
       return {
         ...state,
         loggedIn: payload,
+        finished: true,
         pending: false,
         success: true,
       };
     case GET_LOGGED_IN_FAILURE:
       return {
         ...state,
+        finished: true,
         pending: false,
         success: false,
         errorMessage: payload

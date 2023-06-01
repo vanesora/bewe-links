@@ -3,7 +3,7 @@ import loggedInReducer from "../navigation/ducks/ducks";
 import setUpReducer from "./setup/ducks";
 import loginReducer from "../screens/Login/ducks/login";
 import signupReducer from "../screens/Signup/ducks/signup";
-import logoutReducer from "../screens/Login/ducks/logout";
+import logoutReducer, { LOGOUT_SUCCESS } from "../screens/Login/ducks/logout";
 import linksReducer from "../screens/Links/ducks/links";
 
 const rootReducer = combineReducers({
@@ -12,21 +12,20 @@ const rootReducer = combineReducers({
   login: loginReducer,
   signup: signupReducer,
   logout: logoutReducer,
-  links: linksReducer
+  links: linksReducer,
 });
 
 const rootReducerEnhancer: typeof rootReducer = (state: any, action: any) => {
-
   // Clear all data in redux store to initial.
-  if (action.type === DESTROY_SESSION) {
+  if (action.type === LOGOUT_SUCCESS) {
     state = undefined;
   }
   // eslint-disable-next-line no-console
   // console.log({ state, action });
 
-  return appReducer(state, action);
+  return rootReducer(state, action);
 };
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-export default rootReducer;
+export default rootReducerEnhancer;

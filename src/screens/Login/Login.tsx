@@ -22,6 +22,8 @@ import { ILoggedIn } from "../../navigation/ducks/ducks";
 import { useNavigate } from "react-router-dom";
 import { ILoginData, ILoginState, loginStart } from "./ducks/login";
 import { AtomBody } from "../../components/atoms/Typography/Body";
+import { getLoggedInStart } from "../../navigation/ducks/ducks";
+import { IAction } from "../../interfaces/global";
 
 export type LoginFormFields = {
   email: string;
@@ -31,6 +33,7 @@ interface IProps {
   setup: ISetupState;
   loginState: ILoginState;
   loginStart: (payload: ILoginData) => void;
+  getLoggedInStart: () => IAction;
 }
 
 const mapStateToProps = (state: AppState) => ({
@@ -40,6 +43,7 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = {
   loginStart,
+  getLoggedInStart
 };
 
 const Login: FunctionComponent<IProps> = ({
@@ -77,6 +81,7 @@ const Login: FunctionComponent<IProps> = ({
   useEffect(() => {
     if (loginState.success) {
       navigate("/links");
+      getLoggedInStart();
     }
   }, [loginState.success]);
 

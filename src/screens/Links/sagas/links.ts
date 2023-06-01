@@ -77,7 +77,6 @@ function* _deleteLinks({ payload }: IAction) {
     yield put(getLinksPending());
     const token: string = yield getItem("token");
     const resp: string = yield call(deleteLink, payload.id, token);
-    console.log(payload.actualList.filter((x: ILinks) => x.id != payload.id));
     yield put(      
       deleteLinksSuccess(payload.actualList.filter((x: ILinks) => x.id != payload.id))
     );
